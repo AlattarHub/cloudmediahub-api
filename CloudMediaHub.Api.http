@@ -1,0 +1,6 @@
+@CloudMediaHub.Api_HostAddress = http://localhost:5189
+
+GET {{CloudMediaHub.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
