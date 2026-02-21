@@ -38,4 +38,4 @@ jobs:
           az containerapp update \
             --name $CONTAINER_APP_NAME \
             --resource-group $RESOURCE_GROUP \
-            --image $ACR_NAME.azurecr.io/cloudmediahub-api:$IMAGE_TAG
+            --image $ACR_LOGIN_SERVER/cloudmediahub-api:$IMAGE_TAG
