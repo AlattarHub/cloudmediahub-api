@@ -56,7 +56,7 @@ namespace CloudMediaHub.Api.Services
         }
 
         // Generate a read-only SAS URL for a blob, valid for a specified number of minutes (default is 10)
-        public string GenerateReadSasUrl(string blobName, int expiryMinutes = 20)
+        public string GenerateReadSasUrl(string blobName, int expiryMinutes = 30)
         { 
             var blobClient = GetContainer().GetBlobClient(blobName);
 
