@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  ACR_NAME: alattar
+  ACR_NAME: alattar-hygkehhmfvekb0fy
   CONTAINER_APP_NAME: ca-cloudmediahub-api
   RESOURCE_GROUP: rg-cloudmediahub-dev
 
