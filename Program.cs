@@ -26,6 +26,14 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
 builder.Services.AddApplicationInsightsTelemetry();
 
+// عشان لو نسيت Environment Variable التطبيق يقع فورًا بدل ما يشتغل غلطعشان لو نسيت Environment Variable
+
+var storageAccount = builder.Configuration["AzureStorage:AccountName"];
+if (string.IsNullOrEmpty(storageAccount))
+{
+    throw new Exception("AzureStorage:AccountName is not configured.");
+}
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

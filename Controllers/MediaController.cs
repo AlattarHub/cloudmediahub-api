@@ -161,5 +161,11 @@ namespace CloudMediaHub.Api.Controllers
             return Ok(result);
         }
 
+        [HttpGet("crash")]
+        public IActionResult Crash()
+        {
+            throw new Exception("Test Production Alert");
+        }
+
     }
 }
