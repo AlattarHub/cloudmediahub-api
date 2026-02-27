@@ -6,7 +6,7 @@ on:
 env:
   ACR_LOGIN_SERVER: alattar-hygkehhmfvekb0fy.azurecr.io
   CONTAINER_APP_NAME: ca-cloudmediahub-api-prod
-  RESOURCE_GROUP: rg-cloudmediahub-dev
+  RESOURCE_GROUP: rg-cloudmediahub-prod
 
 jobs:
   deploy:
