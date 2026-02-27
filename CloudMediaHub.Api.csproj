@@ -20,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include=".github\workflows\deploy-prod.yml" />
+    <None Include=".github\workflows\deploy-staging.yml" />
     <None Include=".github\workflows\deploy.yml" />
   </ItemGroup>
 
