@@ -2,10 +2,6 @@ name: Deploy to Production
 
 on:
   workflow_dispatch:
-    inputs:
-      image_tag:
-        description: 'Image tag (commit SHA)'
-        required: true
 
 env:
   ACR_LOGIN_SERVER: alattar-hygkehhmfvekb0fy.azurecr.io
@@ -27,4 +23,4 @@ jobs:
           az containerapp update \
             --name $CONTAINER_APP_NAME \
             --resource-group $RESOURCE_GROUP \
-            --image $ACR_LOGIN_SERVER/cloudmediahub-api:${{ github.event.inputs.image_tag }}
+            --image $ACR_LOGIN_SERVER/cloudmediahub-api:staging-latest
