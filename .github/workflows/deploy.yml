@@ -1,9 +1,9 @@
-name: Build and Deploy to Azure Container Apps
+name: Build and Deploy to Dev
 
 on:
   push:
     branches:
-      - main
+      - dev
 
 env:
   ACR_NAME: alattar
@@ -33,7 +33,7 @@ jobs:
           docker push $ACR_LOGIN_SERVER/cloudmediahub-api:$IMAGE_TAG
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
 
-      - name: Update Container App
+      - name: Deploy to Dev
         run: |
           az containerapp update \
             --name $CONTAINER_APP_NAME \

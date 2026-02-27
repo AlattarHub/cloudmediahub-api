@@ -1,0 +1,29 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  ACR_LOGIN_SERVER: alattar-hygkehhmfvekb0fy.azurecr.io
+  CONTAINER_APP_NAME: ca-cloudmediahub-api-staging
+  RESOURCE_GROUP: rg-cloudmediahub-staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log in to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to Staging
+        run: |
+          IMAGE_TAG=${{ github.sha }}
+          az containerapp update \
+            --name $CONTAINER_APP_NAME \
+            --resource-group $RESOURCE_GROUP \
+            --image $ACR_LOGIN_SERVER/cloudmediahub-api:$IMAGE_TAG
