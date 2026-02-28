@@ -29,10 +29,8 @@ namespace CloudMediaHub.Api.Controllers
         public IActionResult Test()
         {
             var container = _blobService.GetContainer();
-
             return Ok(container.AccountName + ": NEW");
-
-            //return Ok("New Response");
+            
         }
 
         [HttpPost("upload")]
