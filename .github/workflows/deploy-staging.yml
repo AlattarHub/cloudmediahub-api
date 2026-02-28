@@ -23,10 +23,7 @@ jobs:
 
       - name: Deploy to Staging
         run: |
-          az containerapp update \
-          -name $CONTAINER_APP_NAME \
-          --resource-group $RESOURCE_GROUP \
-          --image $ACR_LOGIN_SERVER/cloudmediahub-api:staging-latest
+          az containerapp update --name $CONTAINER_APP_NAME --resource-group $RESOURCE_GROUP --image $ACR_LOGIN_SERVER/cloudmediahub-api:staging-latest
 
       - name: Promote image to staging-latest
         run: |
