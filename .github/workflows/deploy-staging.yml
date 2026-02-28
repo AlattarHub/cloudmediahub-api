@@ -23,16 +23,16 @@ jobs:
 
       - name: Deploy to Staging
         run: |
-          IMAGE_TAG=dev-latest
+          IMAGE_TAG=${{ github.sha }}
           az containerapp update \
-            --name $CONTAINER_APP_NAME \
-            --resource-group $RESOURCE_GROUP \
-            --image $ACR_LOGIN_SERVER/cloudmediahub-api:dev-latest
+          --name $CONTAINER_APP_NAME \
+          --resource-group $RESOURCE_GROUP \
+          --image $ACR_LOGIN_SERVER/cloudmediahub-api:$IMAGE_TAG
 
       - name: Promote image to staging-latest
         run: |
           az acr import \
           --name $ACR_NAME \
-          --source $ACR_LOGIN_SERVER/cloudmediahub-api:dev-latest \
+          --source $ACR_LOGIN_SERVER/cloudmediahub-api:${{ github.sha }} \
           --image cloudmediahub-api:staging-latest \
           --force
