@@ -21,23 +21,17 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy to Staging
-        run: |
-          az containerapp update --name $CONTAINER_APP_NAME --resource-group $RESOURCE_GROUP --image $ACR_LOGIN_SERVER/cloudmediahub-api:staging-latest
-
       - name: Promote image to staging-latest
         run: |
-          az acr import \
-          --name $ACR_NAME \
-          --source $ACR_LOGIN_SERVER/cloudmediahub-api:dev-latest \
-          --image cloudmediahub-api:staging-latest \
-          --force
+            az acr import \
+            --name $ACR_NAME \
+            --source $ACR_LOGIN_SERVER/cloudmediahub-api:dev-latest \
+            --image cloudmediahub-api:staging-latest \
+            --force
 
-      - name: Save image tag
-        run: echo "${{ github.sha }}" > image_tag.txt
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: staging-image-tag
-          path: image_tag.txt
+      - name: Deploy to Staging
+        run: |
+            az containerapp update \
+            --name $CONTAINER_APP_NAME \
+            --resource-group $RESOURCE_GROUP \
+            --image $ACR_LOGIN_SERVER/cloudmediahub-api:staging-latest
