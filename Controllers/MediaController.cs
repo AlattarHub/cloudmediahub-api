@@ -30,7 +30,6 @@ namespace CloudMediaHub.Api.Controllers
         {
             var container = _blobService.GetContainer();
             return Ok(container.AccountName + ": NEW");
-            //return Ok("New Response");
         }
 
         [HttpPost("upload")]
