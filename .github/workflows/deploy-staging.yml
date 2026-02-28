@@ -34,4 +34,4 @@ jobs:
             az containerapp update \
             --name $CONTAINER_APP_NAME \
             --resource-group $RESOURCE_GROUP \
-            --image $ACR_LOGIN_SERVER/cloudmediahub-api:staging-latest
+            --image $ACR_LOGIN_SERVER/cloudmediahub-api:${{ github.sha }}
