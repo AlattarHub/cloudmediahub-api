@@ -6,6 +6,7 @@ on:
       - main
 
 env:
+  ACR_NAME: alattar
   ACR_LOGIN_SERVER: alattar-hygkehhmfvekb0fy.azurecr.io
   CONTAINER_APP_NAME: ca-cloudmediahub-api-staging
   RESOURCE_GROUP: rg-cloudmediahub-staging
