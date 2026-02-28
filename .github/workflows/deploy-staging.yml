@@ -32,3 +32,12 @@ jobs:
           --source $ACR_LOGIN_SERVER/cloudmediahub-api:dev-latest \
           --image cloudmediahub-api:staging-latest \
           --force
+
+      - name: Save image tag
+        run: echo "${{ github.sha }}" > image_tag.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: staging-image-tag
+          path: image_tag.txt
